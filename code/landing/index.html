@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlinD OS | Intelligent. Independent.</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo-section">
+                <img src="assets/logo.png" alt="AlinD Logo" class="nav-logo">
+                <span class="brand-name">AlinD OS</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" data-en="Features" data-tr="Özellikler">Features</a>
+                <a href="#about" data-en="About" data-tr="Hakkında">About</a>
+                <button id="lang-toggle" class="lang-btn">TR</button>
+                <a href="https://github.com/AlinDSoft/AlinD-OS" target="_blank" class="github-link">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="gradient-text">AlinD OS</h1>
+            <p class="slogan">Intelligent. Independent.</p>
+            <p class="description"
+                data-en="A minimalist, Linux-based operating system designed for focus and performance. No bloatware, zero distractions."
+                data-tr="Odaklanma ve performans için tasarlanmış minimalist, Linux tabanlı işletim sistemi. Sıfır gereksiz uygulama.">
+                A minimalist, Linux-based operating system designed for focus and performance. No bloatware, zero
+                distractions.</p>
+            <div class="cta-group">
+                <a href="https://github.com/ahmetakifabus/AlinD-OS/tree/main/code/experimental" class="btn btn-primary"
+                    data-en="Download ISO" data-tr="ISO İndir">Download .img</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="desktop-preview" id="parallax-screen">
+                <div class="preview-header">
+                    <img src="assets/logo.png" alt="Logo" class="preview-logo">
+                </div>
+                <div class="preview-content">
+                    <div class="preview-launcher">Search AlinD OS...</div>
+                </div>
+                <div class="preview-dock">
+                    <img src="assets/bash.png" alt="Terminal" class="dock-app-icon">
+                    <img src="assets/file_explorer.png" alt="Files" class="dock-app-icon">
+                    <img src="assets/settings.png" alt="Settings" class="dock-app-icon">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-en="Why AlinD OS?" data-tr="Neden AlinD OS?">Why AlinD OS?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-en="Blazing Fast" data-tr="Müthiş Hız">Blazing Fast</h3>
+                    <p data-en="Built on a lightweight Linux core, optimized for rapid startup and response."
+                        data-tr="Hafif Linux çekirdeği üzerine inşa edilmiş, hızlı başlangıç ve tepki için optimize edilmiştir.">
+                        Built on a lightweight Linux core, optimized for rapid startup and response.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-en="Secure and Private" data-tr="Güvenli ve Gizli">Secure and Private</h3>
+                    <p data-en="Your data stays yours. Built with security-first principles at every layer."
+                        data-tr="Verileriniz sizin kalır. Her katmanda güvenlik öncelikli ilkelerle inşa edilmiştir.">
+                        Your data stays yours. Built with security-first principles at every layer.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-en="Minimalist UI" data-tr="Minimalist Arayüz">Minimalist UI</h3>
+                    <p data-en="The AlinD Desktop Environment removes the noise so you can focus on what matters."
+                        data-tr="AlinD Masaüstü Ortamı gürültüyü ortadan kaldırır, böylece önemliye odaklanabilirsiniz.">
+                        The AlinD Desktop Environment removes the noise so you can focus on what matters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>2026 AlinDSoft. All rights reserved.</p>
+            <div class="social-links">
+                <span>Intelligent. Independent. AlinD OS.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle
+        let currentLang = 'en';
+        const langBtn = document.getElementById('lang-toggle');
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'tr' : 'en';
+            langBtn.textContent = currentLang === 'en' ? 'TR' : 'EN';
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + currentLang);
+            });
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const screen = document.getElementById('parallax-screen');
+            const scrollY = window.scrollY;
+            const rotation = scrollY * 0.02;
+            const scale = 1 - scrollY * 0.0005;
+
+            if (scale > 0.7) {
+                screen.style.transform = `perspective(1000px) rotateX(${rotation}deg) scale(${scale})`;
+            }
+        });
+    </script>
+</body>
+
+</html>
